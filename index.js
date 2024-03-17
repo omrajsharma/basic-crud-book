@@ -12,6 +12,7 @@ app.use(express.json());
 
 // CREATE
 app.post(bookBaseUrl, (req, res) => {
+    console.log(bookBaseUrl + " - post");
     const {name, author} = req.body;
     // validation 
     if (name == undefined || name.length == 0) {
@@ -31,11 +32,13 @@ app.post(bookBaseUrl, (req, res) => {
 
 // READ
 app.get(bookBaseUrl, (req, res) => {
+    console.log(bookBaseUrl + " - get");
     res.status(200).send(books)
 })
 
 // UPDATE
 app.put((bookBaseUrl + '/:id'), function(req, res) {
+    console.log(bookBaseUrl + " - update");
     const id = req.params.id;
     if (id == undefined || id < 0) {
         res.status(400).send({error: "Invalid Book ID"})
@@ -62,6 +65,7 @@ app.put((bookBaseUrl + '/:id'), function(req, res) {
 
 // DELETE
 app.delete((bookBaseUrl + '/:id'), function(req, res) {
+    console.log(bookBaseUrl + " - delete");
     const id = req.params.id;
     if (id == undefined || id < 0) {
         res.status(400).send({error: "Invalid Book ID"})
