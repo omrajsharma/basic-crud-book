@@ -1,6 +1,6 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
-const port = 5005
 const bookBaseUrl = '/api/v1/books'
 let books = [];
 
@@ -84,4 +84,4 @@ app.delete((bookBaseUrl + '/:id'), function(req, res) {
 //   res.send('Omraj Sharma on earth###')
 // })
 
-app.listen(port, () => {console.log(`Application started at port :${port}`)})
+app.listen(process.env.SERVER_PORT, () => {console.log(`Application started at port :${process.env.SERVER_PORT}`)})
